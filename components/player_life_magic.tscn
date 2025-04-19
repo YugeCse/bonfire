@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkcn6epig2kp5"]
+
+[ext_resource type="Shader" uid="uid://dr2wkb0jiks22" path="res://assets/shaders/cicle_shape.gdshader" id="1_doakq"]
+[ext_resource type="Script" uid="uid://bbww26xbu2qly" path="res://components/player_life_magic.gd" id="1_vg4bt"]
+[ext_resource type="Texture2D" uid="uid://d36cyhlcslx50" path="res://assets/images/health_ui.png" id="1_y1ntx"]
+[ext_resource type="Texture2D" uid="uid://c8lun8uayxhh4" path="res://assets/atlas/player_idle.tres" id="3_fv1do"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fv1do"]
+shader = ExtResource("1_doakq")
+shader_parameter/border_width = 0.1
+shader_parameter/border_color = Color(0.996285, 0.81806, 0.725515, 1)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_vg4bt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_fv1do")
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 19.0
+offset_bottom = 19.0
+color = Color(0.321728, 0.321728, 0.321728, 1)
+
+[node name="LifeMagicContainer" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(40, 13.5)
+offset_left = 20.0
+offset_top = 1.0
+offset_right = 100.0
+offset_bottom = 28.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_y1ntx")
+
+[node name="BloodValue" type="ColorRect" parent="."]
+offset_left = 31.0
+offset_top = 2.5
+offset_right = 66.0
+offset_bottom = 7.5
+color = Color(0.101961, 0.815686, 0.337255, 1)
+
+[node name="MagicValue" type="ColorRect" parent="."]
+offset_left = 31.0
+offset_top = 9.3
+offset_right = 66.0
+offset_bottom = 14.3
+color = Color(0.133333, 0.537255, 1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 19.0
+offset_bottom = 19.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_fv1do")

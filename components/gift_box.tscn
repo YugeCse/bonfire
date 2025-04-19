@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://ccobqjwa1jom8"]
+
+[ext_resource type="Texture2D" uid="uid://xq4tttav12ch" path="res://assets/images/itens/chest_spritesheet.png" id="1_ixr15"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7632"]
+atlas = ExtResource("1_ixr15")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2ibn"]
+atlas = ExtResource("1_ixr15")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7260"]
+atlas = ExtResource("1_ixr15")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jksus"]
+atlas = ExtResource("1_ixr15")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35gx6"]
+atlas = ExtResource("1_ixr15")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ank0"]
+atlas = ExtResource("1_ixr15")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5bqs"]
+atlas = ExtResource("1_ixr15")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73ayt"]
+atlas = ExtResource("1_ixr15")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_df5ae"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7632")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2ibn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7260")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jksus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35gx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ank0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5bqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73ayt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixr15"]
+size = Vector2(16, 16)
+
+[node name="GiftBox" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_df5ae")
+autoplay = "default"
+frame_progress = 0.827709
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_ixr15")
