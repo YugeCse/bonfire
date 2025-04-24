@@ -12,13 +12,22 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var movement = velocity * speed * delta
-	var collider = move_and_collide(movement)
-	if collider: # 如果发生了碰撞
-		var collider_obj = collider.get_collider()
-		if collider_obj is CharacterBody2D:
-			if collider_obj is EnemyNode: # 如果是敌人节点
-				explosion() # 火球爆炸
-				(collider_obj as EnemyNode).take_damage(10)
+	var collision = move_and_collide(movement)
+	if not collision: return # 如果没有发生碰撞，直接返回
+	var collider = collision.get_collider()
+	if collider is CharacterBody2D:
+		if collider is EnemyNode: # 如果是敌人节点
+			(collider as EnemyNode)\
+				.take_damage(randi_range(5, 10))
+			self.explosion() # 火球爆炸
+	elif collider is TileMapLayer: # 如果与地图上的物理节点碰撞
+		self.explosion() # 火球爆炸
+		#var tile_map = collider as TileMapLayer
+		#var collision_point = collision.get_position()
+		#var cell_position = tile_map.local_to_map(collision_point)
+		#var tile_data = tile_map.get_cell_tile_data(cell_position)
+		#if not tile_data: return # 无数据，直接返回
+		# print(tile_data.get_custom_data('object_type'))
 
 ## 火球爆炸
 func explosion():

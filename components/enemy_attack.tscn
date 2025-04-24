@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=3 uid="uid://cx52q4enkch7g"]
+
+[ext_resource type="Script" uid="uid://boi6xancb0oej" path="res://components/enemy_attack.gd" id="1_43ivf"]
+[ext_resource type="Texture2D" uid="uid://cuw2sopdoyvul" path="res://assets/images/enemy/attack_effect_right.png" id="2_vc1xc"]
+[ext_resource type="Texture2D" uid="uid://bgy1cqw3vem0u" path="res://assets/images/enemy/attack_effect_left.png" id="2_wtmu8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j053n"]
+atlas = ExtResource("2_wtmu8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0ivm"]
+atlas = ExtResource("2_wtmu8")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4u2gi"]
+atlas = ExtResource("2_wtmu8")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtmu8"]
+atlas = ExtResource("2_vc1xc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndavd"]
+atlas = ExtResource("2_vc1xc")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7k4j"]
+atlas = ExtResource("2_vc1xc")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j053n"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_j053n")
+}, {
+"duration": 0.25,
+"texture": SubResource("AtlasTexture_t0ivm")
+}, {
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_4u2gi")
+}],
+"loop": false,
+"name": &"attack_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_wtmu8")
+}, {
+"duration": 0.25,
+"texture": SubResource("AtlasTexture_ndavd")
+}, {
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_w7k4j")
+}],
+"loop": false,
+"name": &"attack_right",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t0ivm"]
+
+[node name="EnemyAttack" type="CharacterBody2D"]
+collision_layer = 2048
+collision_mask = 1658
+script = ExtResource("1_43ivf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_j053n")
+animation = &"attack_right"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t0ivm")

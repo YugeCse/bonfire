@@ -1,8 +1,8 @@
 extends CharacterBody2D
 class_name PlayerAttackNode
 
-@export
-var speed: float = 50.0
+#@export
+#var speed: float = 50.0
 
 @export
 var max_distance: float = 30.0
@@ -14,11 +14,21 @@ var current_direction: Vector2 = Vector2.ZERO
 func _ready() -> void:
 	_play_animation(current_direction)
 
+func _physics_process(delta: float) -> void:
+	var collision = move_and_collide(current_direction * delta)
+	if not collision: return
+	var collider = collision.get_collider()
+	if not collider: return
+	if collider is EnemyNode: # 如果是敌方节点
+		$CollisionShape2D.set_deferred(&'disabled', true)
+		queue_free()
+		(collider as EnemyNode).take_damage(randi_range(8, 15))
+
 #func _physics_process(delta: float) -> void:
-	## 移动剑气
+	# 移动剑气
 	#var movement = velocity * speed * delta
 	#_distance_traveled += movement.length()
-	## 超过最大距离则消失
+	# 超过最大距离则消失
 	#if _distance_traveled >= max_distance:
 		#queue_free()
 		#return

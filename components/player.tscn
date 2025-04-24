@@ -1,10 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://p502js4os1v0"]
+[gd_scene load_steps=34 format=3 uid="uid://p502js4os1v0"]
 
 [ext_resource type="Texture2D" uid="uid://ck4l3v2f0paeh" path="res://assets/images/player/knight_idle_left.png" id="1_0g4kb"]
 [ext_resource type="Script" uid="uid://c46dyiyfq7ehd" path="res://components/player.gd" id="1_1kub6"]
 [ext_resource type="Texture2D" uid="uid://coiec3lv6dn67" path="res://assets/images/player/knight_idle.png" id="1_5odhx"]
 [ext_resource type="Texture2D" uid="uid://nek74s7jqgmp" path="res://assets/images/player/knight_run.png" id="3_1kub6"]
 [ext_resource type="Texture2D" uid="uid://cbe40qhqkd108" path="res://assets/images/player/knight_run_left.png" id="4_kuobi"]
+[ext_resource type="PackedScene" uid="uid://dkcn6epig2kp5" path="res://components/player_life_magic.tscn" id="6_kuobi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_couud"]
 atlas = ExtResource("1_5odhx")
@@ -200,11 +201,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_if8o1"]
 size = Vector2(16, 16)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1kub6"]
+radius = 16.0
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 64
 collision_mask = 2426
 platform_floor_layers = 4294963205
-platform_wall_layers = 2426
+platform_wall_layers = 378
 script = ExtResource("1_1kub6")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -223,3 +227,11 @@ animation = &"knight_idle"
 
 [node name="PlayerShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_if8o1")
+
+[node name="DetectionArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea2D"]
+shape = SubResource("CircleShape2D_1kub6")
+debug_color = Color(0.665878, 0.316302, 0.995928, 0.42)
+
+[node name="LifeMagicController" parent="." instance=ExtResource("6_kuobi")]

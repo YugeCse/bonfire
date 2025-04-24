@@ -24,6 +24,8 @@ var _life_magic_value: float = float($MagicValue.size.x)
 func _ready() -> void:
 	max_blood_value = _m_blood_value # 设置初始化的最大血量值
 	max_magic_value = _m_magic_value # 设置初始化的最大魔法值
+	current_blood_value = _m_blood_value # 设置初始化的最大血量值
+	current_magic_value = _m_magic_value # 设置初始化的最大魔法值
 
 ## 最大血量值
 var max_blood_value: float :

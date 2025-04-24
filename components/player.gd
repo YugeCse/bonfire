@@ -99,7 +99,16 @@ func _handle_collide(collider: Object):
 	if collider is StaticBody2D:
 		var parent = collider.get_parent()
 		print('碰撞的名称是：%s' % parent)
-	pass
+
+## 玩家受到攻击伤害
+func take_damage(damage: float):
+	$LifeMagicController.current_blood_value -= damage
+	if $LifeMagicController.current_blood_value > 0.0:
+		print('玩家受到伤害')
+		return
+	print('玩家已经玩完了')
+	$LifeMagicController.current_blood_value = 0.0
+
 
 ## 更新运动状态
 func _update_run_state(state: String):
