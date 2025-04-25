@@ -1,7 +1,5 @@
 # Bonfire游戏
 
-> Godot开发的游戏示例
-
 ## 游戏截图
 
 ![Bonfire](./docs/preview.png)
