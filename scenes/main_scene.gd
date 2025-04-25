@@ -9,7 +9,9 @@ func _ready() -> void:
 		if data and data.has_custom_data('object_type'):
 			var obj_type = data.get_custom_data('object_type')
 			print('----> ' + obj_type)
-			if obj_type == 'floor':
+			if obj_type == 'floor' and coordinate.x > 2 \
+				and coordinate.y > 2 and coordinate.y < 12 \
+				and coordinate.x < 29:
 				_born_coords.push_back(coordinate)
 				print('----> 长度：' + str(_born_coords.size()))
 	for coordinate in $ObjectsLayer.get_used_cells():
@@ -33,5 +35,5 @@ func _generate_enemy(coordinates: Array):
 	var rand = randi_range(0,coordinates.size()-1)
 	var data = coordinates[rand]
 	var node = $EnemyGenerator.generate(\
-		Vector2(data.x, data.y) * Vector2(24, 24))
+		Vector2(data.x, data.y) * Vector2(16, 16))
 	$EnemyLayer.add_child(node)

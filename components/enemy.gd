@@ -110,6 +110,8 @@ func _handle_move(delta: float):
 		# 沿路径移动
 		var next_path_pos = $NavigationAgent2D.get_next_path_position()
 		var direction = global_position.direction_to(next_path_pos)
+		if roundi(direction.x) != 0:
+			current_direction = Vector2(roundi(direction.x), 0)
 		move_and_collide(direction * speed * delta) # 执行移动敌方
 #endregion
 

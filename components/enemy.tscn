@@ -208,6 +208,7 @@ collision_layer = 256
 collision_mask = 1915
 platform_floor_layers = 4294965252
 platform_wall_layers = 378
+safe_margin = 1.0
 script = ExtResource("1_rnm7t")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
@@ -219,7 +220,6 @@ simplify_path = true
 avoidance_enabled = true
 radius = 8.0
 neighbor_distance = 8.0
-debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.0901961, 1, 1, 1)
 debug_path_custom_point_size = 1.08

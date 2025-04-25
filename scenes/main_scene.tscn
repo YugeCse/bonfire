@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=4 uid="uid://dwtw05auy7h7x"]
+[gd_scene load_steps=86 format=4 uid="uid://dwtw05auy7h7x"]
 
 [ext_resource type="Script" uid="uid://cggyo2wx143bc" path="res://scenes/main_scene.gd" id="1_w2twt"]
 [ext_resource type="Texture2D" uid="uid://dcaahoo11q1bh" path="res://assets/images/tile/floor_1.png" id="2_k67gn"]
@@ -35,7 +35,6 @@
 [ext_resource type="Texture2D" uid="uid://3bblxntytcy5" path="res://assets/images/itens/prisoner.png" id="32_xp01v"]
 [ext_resource type="Texture2D" uid="uid://b8us2njxehl4w" path="res://assets/images/itens/spikes.png" id="33_jix7a"]
 [ext_resource type="Texture2D" uid="uid://dq5geky2kdsr3" path="res://assets/images/itens/table.png" id="34_segjr"]
-[ext_resource type="PackedScene" uid="uid://nvgvsp2287ue" path="res://components/enemy.tscn" id="36_onjth"]
 [ext_resource type="Script" uid="uid://bbj80j5p1g2gs" path="res://components/enemy_generator.gd" id="37_onjth"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_267kh"]
@@ -404,9 +403,6 @@ tile_set = SubResource("TileSet_k3g67")
 navigation_enabled = false
 
 [node name="EnemyLayer" type="Node2D" parent="."]
-
-[node name="Enemy" parent="EnemyLayer" instance=ExtResource("36_onjth")]
-position = Vector2(113, 129)
 
 [node name="Player" parent="." instance=ExtResource("5_gubc5")]
 position = Vector2(19, 49)
